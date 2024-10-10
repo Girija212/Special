@@ -1,0 +1,147 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+.block{
+    position: relative;
+    margin: 10% auto 0;
+    width: 50%;
+    height: 400px;
+    background: linear-gradient(0deg, black, rgb(44,43,43));
+}
+
+.glow::before , .glow::after{
+    content:  " ";
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(45deg,#e6fb04,#ff6600,#00ff66,#00ffff,#ff00ff,#ff0099,#6e0dd0,#ff3300,#099fff);
+    background-size: 400%;
+    width: calc(100% + 5px);
+    height: calc(100% + 5px);
+    z-index: -1;
+    animation: animate 20s linear infinite;
+}
+
+@keyframes animate{
+    0%{
+        background-position: 0 0;
+    }
+    50%{
+        background-position: 400% 0;
+    }
+    100%{
+        background-position: 0 0;
+    }
+}
+
+.glow::after{
+    filter: blur(40px);
+}
+
+.image {
+    width: 100%; /* Makes the image responsive */
+    height: 100%; /* Ensures the image fills the height of the block */
+    object-fit: cover; /* Ensures the image covers the block area */
+    position: absolute; /* Positions the image within the block */
+    top: 0; /* Aligns the image to the top */
+    left: 0; /* Aligns the image to the left */
+}
+.message {
+    position: absolute;
+    top: 50px; /* Positions the text near the bottom of the block */
+    left: 20px; /* Add space from the left */
+    color: transparent; /* Makes the text transparent to show the gradient */
+    background: linear-gradient(45deg, #e6fb04, #ff6600, #00ff66, #00ffff, #ff00ff, #ff0099, #6e0dd0, #ff3300, #099fff);
+    -webkit-background-clip: text; /* Clips the background to the text */
+    background-clip: text; /* Clips the background to the text */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Shadow for better readability */
+}
+
+.message h1 {
+    font-size: 24px; /* Heading size */
+    margin: 0; /* Removes default margin */
+}
+
+.message p {
+    font-size: 16px; /* Paragraph size */
+    margin-top: 5px; /* Space above the paragraph */
+}
+
+
+
+
+/* Button Container */
+.btn {
+    position: absolute;
+    top: 50px; 
+    left: 1000px; 
+  } 
+
+
+/* button */
+.btn {
+    margin: 100px;
+    padding: 5px 20px;
+    border: none;
+    outline: none;
+    color: #FFF;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 12px;
+  }
+  .btn::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+  /* glow */
+  .btn::before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #FF0000, #FF7300, #FFFB00, #48FF00,
+      #00FFD5, #002BFF, #FF00C8, #FF0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 600%;
+    z-index: -1;
+    width: calc(100% + 4px);
+    height:  calc(100% + 4px);
+    filter: blur(8px);
+    animation: glowing 20s linear infinite;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+    opacity: 0;
+  }
+  
+  @keyframes glowing {
+    0% {background-position: 0 0;}
+    50% {background-position: 400% 0;}
+    100% {background-position: 0 0;}
+  }
+  
+  /* hover */
+  .btn:hover::before {
+    opacity: 1;
+  }
+  
+  .btn:active:after {
+    background: transparent;
+  }
+  
+  .btn:active {
+    color: #000;
+    font-weight: bold;
+  }
